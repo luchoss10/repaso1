@@ -10,8 +10,6 @@ import com.example.repaso1.utilidades.Utilidades;
 
 public class ConexionSQLiteHelper extends SQLiteOpenHelper {
 
-
-
     public ConexionSQLiteHelper(@Nullable Context context, @Nullable String name, @Nullable SQLiteDatabase.CursorFactory factory, int version) {
         super(context, name, factory, version);
     }
