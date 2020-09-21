@@ -7,17 +7,17 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.Toast;
 
 import com.example.repaso1.R;
+import com.example.repaso1.databinding.FragmentViewBBinding;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link FragmentVerde#newInstance} factory method to
+ * Use the {@link FragmentViewB#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class FragmentVerde extends Fragment {
+public class FragmentViewB extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -28,10 +28,9 @@ public class FragmentVerde extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    Button botonVerde;
-    View vista;
+    private FragmentViewBBinding binding;
 
-    public FragmentVerde() {
+    public FragmentViewB() {
         // Required empty public constructor
     }
 
@@ -41,11 +40,11 @@ public class FragmentVerde extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment FragmentVerde.
+     * @return A new instance of fragment ButterKnifeFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static FragmentVerde newInstance(String param1, String param2) {
-        FragmentVerde fragment = new FragmentVerde();
+    public static FragmentViewB newInstance(String param1, String param2) {
+        FragmentViewB fragment = new FragmentViewB();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -66,14 +65,32 @@ public class FragmentVerde extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        vista = inflater.inflate(R.layout.fragment_verde, container, false);
-        botonVerde = vista.findViewById(R.id.btn_fragment_verde);
-        botonVerde.setOnClickListener(new View.OnClickListener() {
+        //Se infla la vista con el metodo provisto por la clase Biding del layout, asociado.
+        binding = FragmentViewBBinding.inflate(inflater, container, false);
+        //return inflater.inflate(R.layout.fragment_view_b, container, false);
+
+        //De la misma manera que en el activity
+        binding.buttonViewBFragment.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getContext(), "Grrrr, hoola soy verdecito ;)", Toast.LENGTH_SHORT).show();
+                String texto = binding.editTextViewBFragment.getText().toString();
+                if (!texto.equals(""))
+                    binding.textViewViewBFragment.setText(texto);
+                else
+                    Toast.makeText(getContext(), "Ingresa Algo porfis, en el fragment ;)", Toast.LENGTH_LONG).show();
             }
         });
-        return vista;
+
+        //Se obtiene la vista por medio del metodo getRoot de la clase Binding
+        View view = binding.getRoot();
+        //Se retorna para inflar respectivamente en el activiity.
+        return view;
+    }
+
+    //Asegurarce que cuando la vista se desinfle o destruya, se elimine la instancia del objeto de la clase Binding
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        binding = null;
     }
 }

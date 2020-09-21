@@ -1,4 +1,4 @@
-package com.example.repaso1;
+package com.example.repaso1.Activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -11,6 +11,8 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.repaso1.ConexionSQLiteHelper;
+import com.example.repaso1.R;
 import com.example.repaso1.utilidades.Utilidades;
 
 public class ConsultarUsuarioActivity extends AppCompatActivity {

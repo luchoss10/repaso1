@@ -1,4 +1,4 @@
-package com.example.repaso1;
+package com.example.repaso1.Activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
@@ -11,6 +11,7 @@ import android.view.View;
 import com.example.repaso1.Fragments.FragmentAzul;
 import com.example.repaso1.Fragments.FragmentRojo;
 import com.example.repaso1.Fragments.FragmentVerde;
+import com.example.repaso1.R;
 
 public class FragmentsActivity extends AppCompatActivity {
 
